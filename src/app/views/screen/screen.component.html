@@ -1,0 +1,60 @@
+<div class="row row-content">
+  <div class="col col-content split">
+    <h1>Scherm tekst wijziger</h1>
+
+    <div *ngIf='sendError' class="alert alert-danger" role="alert"><strong>Oeps!</strong>
+      {{sendErrorMessage}}
+    </div>
+
+    <div *ngIf='sendSuccess' class="alert alert-success" role="alert">
+      {{sendSuccessMessage}}
+    </div>
+
+    <form autocomplete="off">
+      <div class="form-group">
+        <label for="screen_text">Tekst om te laten zien!</label>
+        <input type="text" [(ngModel)]="screen.text" name="screen_text" class="form-control" id="screen_text" placeholder="Enter scherm text" autocomplete="new-password">
+      </div>
+      <div class="form-group">
+        <label for="screen_font">Font size</label>
+        <select [(ngModel)]="screen.font" name="screen_font" class="form-control" id="screen_font">
+          <option disabled selected value="">--> Selecteer een font <--</option>
+          <option value="big">Big Font</option>
+          <option value="small">Small Font</option>
+        </select>
+      </div>
+      <div class="form-check">
+        <input type="checkbox" [(ngModel)]="screen.clean" name="screen_clean" class="form-check-input" id="screen_clean">
+        <label class="form-check-label"  for="screen_clean">Verschoon scherm</label>
+      </div>
+      <br/>
+      <button (click)="sendToScreen()" type="submit" class="btn btn-primary">Verzend naar OLED</button>
+      <br/>
+      <br/>
+    </form>
+
+  </div>
+  <div class="col col-content screen-history-col">
+    <h1>Scherm tekst geschiedenis</h1>
+    <br/>
+    <table datatable [dtOptions]="dtOptions" class="screen-history-table table table-striped table-dark hover">
+      <thead>
+      <tr>
+        <th>Tijd</th>
+        <th>Scherm tekst</th>
+        <th>Tekst grootte</th>
+        <th>Scherm verschoont</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let record of screenHistory">
+        <td><span style="display: none">{{record['time']}}</span> {{record['timeFormatted']}}</td>
+        <td>{{record['screen_text']}}</td>
+        <td>{{record['text_size']}}</td>
+        <td>{{record['screen_cleaned']}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <br/>
+  </div>
+</div>

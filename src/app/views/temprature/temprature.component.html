@@ -1,0 +1,25 @@
+<div class="row row-content">
+  <div class="col col-content">
+
+    <h1>Temperatuur geschiedenis</h1>
+    <p>De temperatuur gemeten in korbee's atoom bunker, om de opslag klein te houden zijn de gegevens van het afgelopen uur beschikbaar. </p>
+    <br/><br/>
+
+    <table datatable [dtOptions]="dtOptions" class="temp-history-table table table-striped table-dark hover">
+      <thead>
+      <tr>
+        <th>Tijd</th>
+        <th>Temperatuur</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let record of tempHistory">
+        <td><span style="display: none">{{record['time']}}</span> {{record['timeFormatted']}}</td>
+        <td>{{record['temperature']}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <br/><br/>
+  </div>
+</div>

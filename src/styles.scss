@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+.row-content {
+  margin: 10px;
+  background-color: gray;
+  color: white;
+  border-radius: 5px;
+
+  .split {
+    border-right: 2px solid black;
+  }
+
+  .col-content {
+
+  }
+}
